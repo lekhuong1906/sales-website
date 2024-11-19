@@ -24,7 +24,6 @@
             "dest": "/api/index.php"
         }
     ],
-    "outputDirectory": "public",
     "env": {
         "APP_NAME": "Laravel",
         "APP_TIMEZONE": "UTC",
@@ -45,6 +44,7 @@
         "CACHE_PATH": "/tmp",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie",
-        "VITE_APP_NAME": "${APP_NAME}"
+        "VITE_APP_NAME": "${APP_NAME}",
+        "NODE_PATH": "node"
     }
 }
