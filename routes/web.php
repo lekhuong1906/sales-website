@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('products', [ProductController::class,'index'])->name('products');
 
-Route::get('home', function () {
-    $products = \App\Models\Product::all();
-    return view('home')->with('products', $products);
-});
+
+Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
