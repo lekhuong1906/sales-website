@@ -24,7 +24,7 @@
             "dest": "/api/index.php"
         }
     ],
-    "outputDirectory": "/build",
+    "outputDirectory": "public",
     "env": {
         "APP_NAME": "Laravel",
         "APP_TIMEZONE": "UTC",
