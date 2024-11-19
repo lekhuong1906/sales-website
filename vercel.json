@@ -8,11 +8,23 @@
     },
     "routes": [
         {
+            "src": "/build/(.*)",
+            "dest": "/public/build/"
+        },
+        {
+            "src": "/resources/(.*)",
+            "dest": "/public/resources/"
+        },
+        {
+            "src": "/favicon/(.*)",
+            "dest": "/public/favicon/"
+        },
+        {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
     ],
-     "outputDirectory": "public",
+    "outputDirectory": "public",
     "env": {
         "APP_NAME": "Laravel",
         "APP_TIMEZONE": "UTC",
