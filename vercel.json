@@ -12,6 +12,7 @@
             "dest": "/api/index.php"
         }
     ],
+     "outputDirectory": "public",
     "env": {
         "APP_NAME": "Laravel",
         "APP_TIMEZONE": "UTC",
