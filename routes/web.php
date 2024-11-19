@@ -7,5 +7,6 @@ Route::get('/', function () {
 });
 
 Route::get('home', function () {
-    return view('home');
+    $products = \App\Models\Product::all();
+    return view('home')->with('products', $products);
 });

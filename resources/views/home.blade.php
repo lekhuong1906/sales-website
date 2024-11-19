@@ -14,6 +14,9 @@
     <h1 class="text-3xl font-bold underline text-red-500">
         Hello world!
     </h1>
+    @foreach ($products as $product)
+        {{ $product }}
+    @endforeach
 
 </body>
 
