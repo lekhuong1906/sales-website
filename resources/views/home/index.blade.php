@@ -26,6 +26,7 @@
     <footer>
         @include('home.footer')
     </footer>
+    @vite('resources/js/home.js')
 </body>
 
 </html>

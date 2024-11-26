@@ -15,6 +15,7 @@ export default {
                 // sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 sans: ['"Sour Gummy"', 'ui-sans-serif', 'system-ui'],
             },
+            
         },
     },
     plugins: [],

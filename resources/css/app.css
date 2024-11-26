@@ -7,19 +7,66 @@ body {
     @apply bg-gray-50 text-gray-800 font-sans;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    @apply font-bold text-gray-900;
+.title {
+    @apply text-3xl font-bold text-slate-900
 }
 
-a {
-    @apply text-blue-500 hover:underline;
+.title--primary {
+    @apply text-orange-700
 }
 
-button {
-    @apply inline-block font-medium text-center transition-colors duration-200;
+.form__link {
+    @apply flex items-center justify-center px-4 h-10 ms-3 text-gray-500 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-gray-700 text-xl font-normal cursor-pointer no-underline hover:no-underline;
+}
+
+.form__link--primary {
+    @apply border-none text-white bg-orange-500 hover:bg-orange-400
+}
+
+.form__button {
+    @apply text-black text-sm bg-white hover:bg-slate-300 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg px-5 py-2.5 text-center;
+}
+
+.form__button--primary {
+    @apply text-white bg-orange-500 hover:bg-orange-400
+}
+
+.form__select {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-700 block w-full p-2.5;
+}
+
+.form__input {
+    @apply shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5
+}
+
+.form__input-file {
+    @apply file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-slate-100 file:text-orange-700 hover:file:bg-orange-100 cursor-pointer
+}
+
+.form__textarea {
+    @apply block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-800 focus:border-orange-700
+}
+
+.form__label {
+    @apply block mb-2 text-sm font-medium text-orange-800
+}
+
+.form__label-tag {
+    @apply w-fit px-4 py-2 text-sm rounded-full border-spacing-1 border-gray-300 bg-slate-200 hover:bg-orange-200 cursor-pointer
+}
+
+.form__label-tag.form__label-tag--active {
+    @apply bg-green-600 hover:bg-green-300
+}
+
+.form__label-dropdown {
+    @apply text-white border-gray-300 bg-slate-200 hover:bg-orange-200 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center cursor-pointer
+}
+
+.form__label-dropdown--active {
+    @apply bg-green-600 hover:bg-green-300
+}
+
+.form__label-dropdown--destroy {
+    @apply bg-red-400 hover:bg-red-300
 }

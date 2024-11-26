@@ -4,32 +4,33 @@ namespace App\Models;
 
 // use Illuminate\Database\Eloquent\Model;
 use MongoDB\Laravel\Eloquent\Model;
+use MongoDB\Laravel\Eloquent\SoftDeletes;
 
-class Product extends Model
+class Tag extends Model
 {
+    use SoftDeletes;
     const STATUS_DEFAULT = 1;
+    const STATUS_INVALID = 0;
     protected $useLocalized = true;
+
     protected $connection = 'mongodb';
-    protected $collection = 'products';
+    protected $collection = 'tags';
     protected $timestamped = true;
 
     protected $fillable = [
         'name',
         'description',
-        'images',
-        'price',
-        'tags',
-        'stock',
         'status',
-        'commands'
     ];
+
     protected $attributes = [
-        'tag' => [],
-        'commands' => [],
+        'name' => [],
+        'description' => [],
+
     ];
+
     protected $casts = [
-        'tag' => null,
-        // 'status' => self::STATUS_DEFAULT,
+        'status' => 'integer',
     ];
 
     /**
@@ -47,11 +48,11 @@ class Product extends Model
     /**
      * Get field Description by localized.
      */
-    public function getDescriptionAttribute($value)
+    public function getDesAttribute($value)
     {
         if ($this->useLocalized) {
             $locale = app()->getLocale();
-            return $this->attributes['description'][$locale] ?? null;
+            return $this->attributes['des'][$locale] ?? null;
         }
         return $value;
     }
@@ -65,13 +66,25 @@ class Product extends Model
         return $this;
     }
 
+
+    //Scope
     /**
-     * Get list product valid
+     * Get all tag valid
      * @param mixed $query
      * @return mixed
      */
-    public function scopeGetListProductValid($query)
+    public function scopeGetListTagValid($query)
     {
-        return $query->where('status', self::STATUS_DEFAULT)->orderBy('created_at', 'desc');
+        return $query->where('status', self::STATUS_DEFAULT)->orderBy('created_at', 'DESC');
+    }
+
+    /**
+     * Get all tag invalid
+     * @param mixed $query
+     * @return mixed
+     */
+    public function scopeGetListTagInvalid($query)
+    {
+        return $query->where('status', self::STATUS_INVALID)->orderBy('updated_at', 'DESC');
     }
 }
