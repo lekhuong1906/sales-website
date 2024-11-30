@@ -17,4 +17,11 @@ $(document).ready(function () {
 
         })
     })
+
+    $('#product-detail').on('click',function(){
+        $('#product-detail-container').removeClass('hidden');
+    })
+    $('#close-modal').on('click', function(){
+        $('#product-detail-container').addClass('hidden');
+    })
 })

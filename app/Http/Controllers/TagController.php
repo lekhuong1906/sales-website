@@ -48,6 +48,11 @@ class TagController extends Controller
         }
     }
 
+    /**
+     * Ajax function active Tag
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function activeTag(Request $request)
     {
 
@@ -58,22 +63,30 @@ class TagController extends Controller
         $tag = Tag::find($request->id);
 
         if (!$tag) {
-            session()->flash('error','Something went wrong! Please try again.');
+            session()->flash('error', 'Something went wrong! Please try again.');
             return response()->json([
-                'success' => 'Item not found',
+                'success' => false,
+                'message' => 'Item not found',
             ], 401);
         }
 
         $tag->status = Tag::STATUS_DEFAULT;
         $tag->save();
 
-        session()->flash('success','Active Tag Success');
+        $view = view('admin.components.tags.tag_active_item')->with(['id' => $request->id, 'name' => $tag->name])->render();
 
         return response()->json([
-            'success' => 'Active Tag Success',
+            'success' => true,
+            'message' => 'Active Tag Success',
+            'view' => $view
         ], 200);
     }
 
+    /**
+     * Ajax function inactive Tag
+     * @param \Illuminate\Http\Request $request
+     * @return mixed|\Illuminate\Http\JsonResponse
+     */
     public function inactiveTag(Request $request)
     {
         // $validate = $request->validate(['id' => 'required']);
@@ -81,19 +94,21 @@ class TagController extends Controller
 
         // }
         $tag = Tag::find($request->id);
-        if (!$tag) {
-            session()->flash('error','Something went wrong! Please try again.');
+        if (!$tag)
             return response()->json([
-                'success' => 'Item not found',
+                'success' => false,
+                'message' => 'Item not found'
             ], 401);
-        }
+
         $tag->status = Tag::STATUS_INVALID;
         $tag->save();
 
-        session()->flash('success','Inactive Tag Success');
+        $view = view('admin.components.tags.tag_inactive_item')->with(['id' => $request->id, 'name' => $tag->name])->render();
 
         return response()->json([
-            'success' => 'Inactive Tag Success',
+            'success' => true,
+            'message' => 'Inactive Tag Success',
+            'view' => $view
         ], 200);
     }
 
@@ -111,11 +126,11 @@ class TagController extends Controller
     public function edit(string $id)
     {
         $tag = Tag::find($id)->withoutLocalized();
-        if (!$tag) {
+        if (!$tag)
             return response()->json([
-                'error' => 'Item not found',
+                'success' => false,
+                'message' => 'Item not found',
             ], 401);
-        }
 
         $view = view('admin.components.tags.tag_edit_item', compact('tag'))->render();
         // dump($view);
@@ -143,72 +158,74 @@ class TagController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Ajax function destroy tag 2621 - 5240 101294
      */
     public function destroy(Request $request)
     {
         $tag = Tag::find($request->id);
-        if (!$tag) {
-            session()->flash('error','Not found tag');
-
+        if (!$tag)
             return response()->json([
-                'error' => 'Item not found',
+                'success' => false,
+                'message' => 'Item not found',
             ], 401);
-        }
+
         $tag->delete();
 
-        session()->flash('success','Delete Tag Success');
+        $view = view('admin.components.tags.tag_deleted_item')->with(['id' => $request->id, 'name' => $tag->name])->render();
 
         return response()->json([
-            'success' => 'Delete Tag Success',
+            'success' => true,
+            'message' => 'Delete Tag Success',
+            'view' => $view
         ], 200);
     }
 
     /**
-     * Force Delete the specified resource from storage.
+     * Ajax function Force Delete tag
      */
     public function forceDelete(Request $request)
     {
         $tag = Tag::onlyTrashed()->find($request->id);
 
-        if (!$tag) {
-            session()->flash('error','Not found tag');
-
+        if (!$tag)
             return response()->json([
-                'error' => 'Item not found',
-            ], 401);
-        }
+                'success' => false,
+                'message' => 'Item not found',
+            ], 404);
 
         $tag->forceDelete();
 
-        session()->flash('success','Delete Tag Success');
-
         return response()->json([
-            'success' => 'Delete Tag Success',
+            'success' => true,
+            'message' => 'Force Delete Tag Success',
         ], 200);
     }
 
     /**
-     * Restore the specified resource from storage.
+     * Ajax function restore
      */
     public function restore(Request $request)
     {
         $tag = Tag::onlyTrashed()->find($request->id);
 
-        if (!$tag) {
-            session()->flash('error','Not found tag');
-
+        if (!$tag)
             return response()->json([
-                'error' => 'Item not found',
-            ], 401);
-        }
+                'success' => false,
+                'message' => 'Item not found',
+            ], 404);
 
         $tag->restore();
 
-        session()->flash('error','Restore Tag Success');
+        if ($tag->status)
+            $view = view('admin.components.tags.tag_active_item')->with(['id' => $tag->_id, 'name' => $tag->name])->render();
+        else
+            $view = view('admin.components.tags.tag_inactive_item')->with(['id' => $tag->_id, 'name' => $tag->name])->render();
 
         return response()->json([
-            'success' => 'Restore Tag Success',
+            'success' => true,
+            'message' => 'Restore Tag Success',
+            'status' => $tag->status,
+            'view' => $view
         ], 200);
     }
 }

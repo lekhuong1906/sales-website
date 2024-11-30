@@ -113,6 +113,7 @@ return [
         ],
         'mongodb' => [
             'driver' => 'mongodb',
+            'host'     => env('MONGO_DB_HOST', '127.0.0.1'),
             'dsn' => env('MONGODB_URI', 'mongodb://localhost:27017'),
             'database' => env('MONGODB_DATABASE', 'local'),
         ]

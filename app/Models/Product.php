@@ -57,6 +57,16 @@ class Product extends Model
     }
 
     /**
+     * Get images url attribute.
+     */
+    public function getImagesAttribute()
+    {
+        return collect($this->attributes['images'])->map(function ($image) {
+            return asset($image);  // Return the asset URL for each image
+        });
+    }
+
+    /**
      * Disable localized accessor.
      */
     public function withoutLocalized()

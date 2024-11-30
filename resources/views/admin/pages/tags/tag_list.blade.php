@@ -10,7 +10,7 @@
             <label class="form__label" for="user_avatar">
                 Tags Hiển Thị
             </label>
-            <div
+            <div id="tag__items-active"
                 class="flex gap-2 items-center flex-wrap p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-200">
                 @if (count($data['valid']) > 0)
                     @foreach ($data['valid'] as $tag_id => $tag)
@@ -30,7 +30,7 @@
                 Tags Đã Ẩn
             </label>
 
-            <div
+            <div id="tag__items-inactive"
                 class="flex gap-2 items-center flex-wrap p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-200">
                 @if (count($data['invalid']) > 0)
                     @foreach ($data['invalid'] as $tag)
@@ -49,7 +49,7 @@
             <label class="form__label" for="user_avatar">
                 Tags Đã Xóa
             </label>
-            <div
+            <div id="tag__items-destroy"
                 class="flex gap-2 items-center flex-wrap p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-200">
                 @if (count($data['trash']) > 0)
                     @foreach ($data['trash'] as $tag_id => $tag)
@@ -74,5 +74,5 @@
     <!-- For Edit item -->
     <div id="tag__edit-container"></div>
 
-    @vite('resources/js/tag_list.js')
+    @vite('resources/js/admin/tag_list.js')
 @endsection

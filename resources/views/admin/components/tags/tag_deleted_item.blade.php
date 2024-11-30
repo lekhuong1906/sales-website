@@ -1,7 +1,6 @@
 <!-- Active Item Template -->
-<div class="relative">
-    <label id="abc" data-event="dropdown-tag-item" data-dropdown="{{ $id }}"
-        class="form__label-dropdown form__label-dropdown--destroy" type="button">
+<div id="{{ $id }}" class="relative tag-group">
+    <label class="form__label-dropdown form__label-dropdown--destroy" type="button">
         {{ $name }}
         <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 10 6">
@@ -10,18 +9,17 @@
         </svg>
     </label>
     <!-- Dropdown for Active Item -->
-    <div data-parent-dropdown="{{ $id }}"
-        class="absolute  hidden mt-1 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+    <div class="absolute  hidden mt-1 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dropdown-container">
         <ul class="py-3 text-sm text-gray-700">
             <li>
-                <a data-event="tag-action" data-action="restore" data-tag-id="{{ $id }}"
-                    class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a data-action="restore"
+                    class="block px-4 py-2 hover:bg-gray-100 cursor-pointer tag-action">
                     Restore
                 </a>
             </li>
             <li>
-                <a data-event="tag-action" data-action="force-delete" data-tag-id="{{ $id }}"
-                    class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                <a data-action="force-delete"
+                    class="block px-4 py-2 hover:bg-gray-100 cursor-pointer tag-action">
                     Force Delete
                 </a>
             </li>

@@ -53,7 +53,7 @@ class ProductService extends BaseService
         $urls = array_map(function ($image) use ($timestamp) {
             $uniqueName = $timestamp . '_' . Str::random(8) . '_' . $image->getClientOriginalName();
             $image->move(public_path("uploads"), $uniqueName);
-            return asset('uploads/' . $uniqueName);
+            return 'uploads/' . $uniqueName;
         }, $images);
 
         return $urls;

@@ -75,4 +75,4 @@
     </div>
 </div>
 
-@vite('resources/js/modal_tag_add.js')
+@vite('resources/js/admin/tag_add.js')

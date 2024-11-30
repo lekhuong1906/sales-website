@@ -152,5 +152,5 @@
         @include('admin.components.tags.tag_add')
     </div>
 
-    @vite('resources/js/product_edit.js')
+    @vite('resources/js/admin/product_edit.js')
 @endsection

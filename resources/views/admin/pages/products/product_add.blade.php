@@ -116,5 +116,5 @@
         @include('admin.components.tags.tag_add')
     </div>
 
-    @vite('resources/js/product_add.js')
+    @vite('resources/js/admin/product_add.js')
 @endsection

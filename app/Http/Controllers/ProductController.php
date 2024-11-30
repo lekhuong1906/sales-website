@@ -85,9 +85,9 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+    {   
+        dd($request->all());
         $product = $this->productService->update($request->all(), $id);
-        // dd($request->all());
         if (!$product)
             return redirect()->back()->with("error", "Something went wrong! Please try again");
 

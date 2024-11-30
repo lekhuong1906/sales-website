@@ -1,0 +1,47 @@
+# version: '3.9'
+
+services:
+  # PHP Container
+  app:
+    build:
+      args:
+        user: lekhuong
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    container_name: app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      # - ./dockers/php/php.ini:/usr/local/etc/php/php.ini #Optional custom php.ini
+    networks:
+      - sale-website
+    depends_on:
+      - mongodb
+  # Nginx Container
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "9999:8000"
+    volumes:
+      - ./:/var/www
+      - ./dockers/nginx:/etc/nginx/conf.d # Nginx config app
+    networks:
+      - sale-website
+  # MongodDb Container
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    networks:
+      - sale-website
+networks:
+  sale-website:
+    driver: bridge

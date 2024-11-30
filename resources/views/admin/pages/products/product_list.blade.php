@@ -95,7 +95,8 @@
             Next
         </a>
     </div> --}}
+    @include('admin.components.products.product_detail')
     @include('admin.components.notify')
 
-    @vite('resources/js/product_list.js')
+    @vite('resources/js/admin/product_list.js')
 @endsection
