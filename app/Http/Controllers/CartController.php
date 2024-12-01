@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // dd(Product::all());
-        return view("home.pages.home");
+        //
     }
 
     /**

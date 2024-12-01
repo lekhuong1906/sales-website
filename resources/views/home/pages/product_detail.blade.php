@@ -1,4 +1,4 @@
-@extends('home.index')
+@extends('home.home_layout')
 @section('content')
     <div class="my-16 text-center text-3xl text-orange-600">Gia Sản Thứ {{ $product->_id }}</div>
     <div class="flex gap-4 justify-between p-4">

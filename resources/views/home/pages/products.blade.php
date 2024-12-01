@@ -1,4 +1,4 @@
-@extends('home.index')
+@extends('home.home_layout')
 @section('content')
     <div class="mx-auto">
         <div class="my-16 text-center text-3xl text-orange-600">Toàn Bộ Gia Sản</div>

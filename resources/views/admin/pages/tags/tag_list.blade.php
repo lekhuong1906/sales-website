@@ -1,4 +1,4 @@
-@extends('admin.index')
+@extends('admin.admin_layout')
 @section('admin_content')
     <div class="p-4 mb-6 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
         <h1 class="title title--primary">Tag List</h1>
@@ -74,5 +74,6 @@
     <!-- For Edit item -->
     <div id="tag__edit-container"></div>
 
-    @vite('resources/js/admin/tag_list.js')
+        @vite('resources/js/admin/tag_list.js')
+
 @endsection

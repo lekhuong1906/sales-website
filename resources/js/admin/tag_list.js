@@ -73,6 +73,8 @@ $(document).ready(function () {
             },
             success: function (response) {
                 //Notify
+                console.log('Active');
+                
                 toastr.success(response.message);
 
                 //Update item to container

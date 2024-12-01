@@ -1,4 +1,4 @@
-@extends('home.index')
+@extends('home.home_layout')
 @section('content')
     <div class="mx-auto">
         <!-- Carousel -->
@@ -124,13 +124,14 @@
                             </svg>
                         </a>
                     </div>
-                    <a href="{{route('product-detail', 1)}}" class="underline-offset-0 cursor-pointer">
+                    <a href="{{ route('product-detail', 1) }}" class="underline-offset-0 cursor-pointer">
                         <img class="p-8 rounded-t-lg"
                             src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/5/15_2_7_2_5.jpg"
                             alt="product image" />
                     </a>
                     <div class="px-5 pb-5">
-                        <a href="{{route('product-detail', 1)}}" class="underline-offset-0  hover:underline-offset-0 cursor-pointer">
+                        <a href="{{ route('product-detail', 1) }}"
+                            class="underline-offset-0  hover:underline-offset-0 cursor-pointer">
                             <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">Apple Watch
                                 Series 7
                                 GPS, Aluminium Case, Starlight Sport</h5>
@@ -216,4 +217,6 @@
         </div>
 
     </div>
+
+    @vite('resources/js/home/home.js')
 @endsection
