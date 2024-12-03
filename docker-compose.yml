@@ -37,6 +37,7 @@ services:
   mongodb:
     image: mongo:latest
     container_name: mongodb
+    hostname: mongodb-docker
     restart: unless-stopped
     ports:
       - "27017:27017"

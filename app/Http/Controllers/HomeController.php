@@ -16,6 +16,10 @@ class HomeController extends Controller
         return view("home.pages.home");
     }
 
+    public function checkout(){
+        return view('home.pages.checkout');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

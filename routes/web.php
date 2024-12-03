@@ -5,10 +5,15 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AuthenticateController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('products', [ProductController::class, 'index'])->name('products');
 Route::get('product/{id}', [ProductController::class, 'show'])->name('product-detail');
+Route::get('checkout',[HomeController::class, 'checkout'])->name('checkout');
+
+Route::get('login',[AuthenticateController::class, 'loginForm'])->name('login');
+Route::post('handle-login', [AuthenticateController::class, 'login'])->name('handle-login');
 
 Route::prefix('auth')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
